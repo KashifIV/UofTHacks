@@ -22,6 +22,9 @@ dependencies:
   flutter_ibm_watson: ^0.0.1
   scoped_model: ^1.0.1
   image_picker: ^0.4.12+1
+  cloud_firestore: ^0.3.0
+  firebase_auth: 0.5.19
+  firebase_core: any
 
 dev_dependencies:
   flutter_test:
