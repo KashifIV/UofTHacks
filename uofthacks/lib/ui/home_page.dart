@@ -5,6 +5,8 @@ import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
+import 'package:uofthacks/ui/make_card.dart';
+
 class HomePage extends StatefulWidget{
   final Auth auth;
   final VoidCallback onSignedOut;

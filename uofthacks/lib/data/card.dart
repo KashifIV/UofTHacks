@@ -4,6 +4,7 @@ class FlashCard {
   File image;
   var words;
   var translations;
+  var name;
 
   FlashCard(File image) {
     this.image = image;
