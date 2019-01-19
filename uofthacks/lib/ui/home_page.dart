@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
+import 'package:uofthacks/domain/test_model.dart';
+import 'package:uofthacks/ui/test_page.dart';
 class HomePage extends StatefulWidget{
   _HomePage createState() => _HomePage();
 }
@@ -34,7 +36,18 @@ class _HomePage extends State<HomePage>{
                     ),
                   ),
                   padding: EdgeInsets.all(20.0),
-                )
+                ),
+                RaisedButton(
+                  onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                    ScopedModel<TestModel>(model: TestModel(), child:TestPage()))),
+                  child: Text(
+                    'Developer Mode',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                  padding: EdgeInsets.all(20.0),
+                ),
               ],
             ),
           ),
