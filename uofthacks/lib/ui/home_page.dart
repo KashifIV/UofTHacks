@@ -8,46 +8,42 @@ class HomePage extends StatefulWidget{
   _HomePage createState() => _HomePage();
 }
 class _HomePage extends State<HomePage>{
+  Widget ButtonCreator(String title, Function press){
+    return RaisedButton(
+     color: Colors.amber[800],
+     shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0)),
+     onPressed: press,
+     child: Container(
+       height: 40,
+       width: 230,
+       child: Text(
+         title,
+         textAlign: TextAlign.center,
+         style: TextStyle(
+           color: Colors.white,
+           fontSize: 30,
+         ),
+       ),
+     ),
+     padding: EdgeInsets.all(20.0),
+   );
+  }
   @override
     Widget build(BuildContext context) {
       return ScopedModelDescendant<ViewModel>(
         rebuildOnChange: true,
         builder: (context, child, model) => Scaffold(
+          backgroundColor: Colors.grey[800],
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                RaisedButton(
-                  child: Text(
-                    '1 Player!',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                  padding: EdgeInsets.all(20.0),
-                ),
-                RaisedButton(
-                  onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage())),
-                  child: Text(
-                    '2 Players!',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                  padding: EdgeInsets.all(20.0),
-                ),
-                RaisedButton(
-                  onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                    ScopedModel<TestModel>(model: TestModel(), child:TestPage()))),
-                  child: Text(
-                    'Developer Mode',
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                  padding: EdgeInsets.all(20.0),
-                ),
+                ButtonCreator('Solo Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                SizedBox(height: 20,),
+                ButtonCreator('Group Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                SizedBox(height: 20,),
+                ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
               ],
             ),
           ),
