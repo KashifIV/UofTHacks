@@ -7,6 +7,10 @@ import 'package:uofthacks/data/card.dart';
 import 'package:uofthacks/ui/card_view.dart';
 
 class GenerateWords extends StatefulWidget {
+  File img;
+
+  GenerateWords({Key key, @required this.img}) : super(key: key);
+
   _GenerateWords createState() => _GenerateWords();
 }
 
@@ -58,6 +62,15 @@ class _GenerateWords extends State<GenerateWords> {
               },
             ),
           ),
+          new Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(10.0),
+            child: Image.file(
+              widget.img,
+              scale: 0.6,
+              //width: 2,
+            ),
+          )
         ],
       ),
     );

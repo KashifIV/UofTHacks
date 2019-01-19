@@ -7,8 +7,9 @@ import 'package:uofthacks/data/card.dart';
 
 class CardView extends StatefulWidget {
   String name;
+  File img;
 
-  CardView({Key key, this.name}) : super(key: key);
+  CardView({Key key, @required this.name, @required this.img}) : super(key: key);
 
   _CardView createState() => _CardView();
 }
