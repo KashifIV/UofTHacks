@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
+import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
 
 class HomePage extends StatefulWidget{
+  final Auth auth;
+  final VoidCallback onSignedOut;
+  HomePage({this.auth, this.onSignedOut});
   _HomePage createState() => _HomePage();
 }
 class _HomePage extends State<HomePage>{
@@ -58,7 +62,7 @@ class _HomePage extends State<HomePage>{
                 SizedBox(height: 20,),
                 ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
                 SizedBox(height: 20,),
-                ButtonCreator('Your Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                ButtonCreator('Developer Mode', () =>  Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
               ],
             ),
           ),
