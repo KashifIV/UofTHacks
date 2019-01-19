@@ -1,10 +1,10 @@
 import 'dart:io';
-
-class Card {
+import 'package:uofthacks/data/watson.dart';
+class FlashCard {
   File image;
   var words;
 
-  Card(File image) {
+  FlashCard(File image) {
     this.image = image;
     this.generateWords();
     
@@ -12,7 +12,7 @@ class Card {
   }  
 
   void generateWords() {
-    
+    visualRecognitionFile(this.image);
   }
 
 }

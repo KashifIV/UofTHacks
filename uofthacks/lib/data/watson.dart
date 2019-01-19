@@ -21,10 +21,13 @@ void visualRecognitionFile(File image) async {
         iamOptions: options, language: Language.ENGLISH);
     ClassifiedImages classifiedImages =
         await visualRecognition.classifyImageFile(image.path);
-
+  /*
     print(classifiedImages
         .getImages()[0]
         .getClassifiers()[0] // need more than 0??
         .getClasses()[0]
         .className);
+        */
+    print('----------------------------------------------------------');
+    classifiedImages.getImages()[0].getClassifiers()[0].getClasses().forEach((item) => print(item.className + ' :' + item.score.toString()));
 }

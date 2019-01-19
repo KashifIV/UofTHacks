@@ -20,6 +20,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_ibm_watson: ^0.0.1
+  scoped_model: ^1.0.1
+  image_picker: ^0.4.12+1
 
 dev_dependencies:
   flutter_test:
