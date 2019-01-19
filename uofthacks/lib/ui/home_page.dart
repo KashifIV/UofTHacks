@@ -4,6 +4,8 @@ import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
+import 'package:uofthacks/ui/make_card.dart';
+
 class HomePage extends StatefulWidget{
   _HomePage createState() => _HomePage();
 }
@@ -43,7 +45,7 @@ class _HomePage extends State<HomePage>{
                 SizedBox(height: 20,),
                 ButtonCreator('Group Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
                 SizedBox(height: 20,),
-                ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> MakeCard()))),
               ],
             ),
           ),
