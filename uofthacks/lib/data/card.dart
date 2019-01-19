@@ -1,53 +1,71 @@
 import 'dart:io';
 import 'package:uofthacks/data/watson.dart';
 import 'package:flutter_ibm_watson/flutter_ibm_watson.dart';
+import 'package:quiver/iterables.dart';
+import 'dart:math';
 
 class FlashCard {
   File image;
   var words = [];
-  var scores = [];
-  List<dynamic> translations;
+  List<double> scores = [];
+  var bestWords;
+  List<TranslationResult> translations = [];
 
   FlashCard(File image) {
     this.image = image;
     this.generateWords();
-    //this.translateWords();
   }  
 
   void generateWords() {
     visualRecognitionFile(this.image).then((value) { 
       print(value.runtimeType);
-      //this.words = value;
-      //this.words = value;
-      //this.words = ClassResult
-      
-      /*
-      for (int i = 0; i < 3; i++) {
-        this.words.add(value[i].className);
-        this.scores.add(value[i].score);
-      }
-      */
 
       value.forEach((item) {
         this.words.add(item.className);
         this.scores.add(item.score);
       });
 
-      
-
       print(this.words.toString());
       print(this.scores.toString());
+
+      this.maxScores(this.scores);
+      this.translateWords();
+
+     
     });
 
-
-    //translateWords();
   }
 
-  void translateWords() {
-    this.words.forEach((w) => translations.add(languageTranslator(w)));
-    print(this.words);
+  Future<void> translateWords() async {
+    this.translations.add(await languageTranslator(this.bestWords[0]));
+    this.translations.add(await languageTranslator(this.bestWords[1]));
+    this.translations.add(await languageTranslator(this.bestWords[2]));
+    this.translations.add(await languageTranslator(this.bestWords[3]));
+
     print(this.translations);
   }
-  
+
+  void maxScores(List<double> l) {
+    List<int> ind = [];
+    List<double> mx = [];
+    for (int i = 0; i < l.length; i++) {
+      if (ind.length < 4) {
+        ind.add(i);
+        mx.add(l[i]);
+      }
+      else if (mx[0] < l[i] && mx[1] < l[i] && mx[2] < l[i] && mx[3] < l[i]) {
+        mx[mx.indexOf(min(mx))] = l[i];
+        ind[mx.indexOf(min(mx))] = i;
+      }
+
+    }
+    this.bestWords = [];
+    this.bestWords.add(this.words[ind[0]]);
+    this.bestWords.add(this.words[ind[1]]);
+    this.bestWords.add(this.words[ind[2]]);
+    this.bestWords.add(this.words[ind[3]]);
+
+    print(this.bestWords);
+  }
 
 }
