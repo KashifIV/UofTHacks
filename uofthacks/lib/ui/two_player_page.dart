@@ -10,7 +10,7 @@ class TwoPlayerPage extends StatefulWidget{
 class _TwoPlayerPage extends State<TwoPlayerPage>{
   File _image;
   Future<void> GetImage(ViewModel model) async{
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
     setState(() {
       _image = image;
     });
