@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:uofthacks/data/watson.dart';
 class FlashCard {
+  String id;
   File image;
   var words;
   var translations;
@@ -14,7 +15,12 @@ class FlashCard {
   void generateWords() {
     this.words = visualRecognitionFile(this.image);
   }
-
+  Map<String, dynamic> mapTo(String id, String lang){
+    var dataMap = new Map<String, dynamic>();
+    dataMap['uid'] = id;
+    dataMap['language'] = lang;
+    return dataMap;
+  }
 /*
   void translateWords() {
     this.words.forEach((w) => translations.add(languageTranslator(w)));
