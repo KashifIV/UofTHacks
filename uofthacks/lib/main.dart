@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ibm_watson/flutter_ibm_watson.dart';
 
 void main() => runApp(MyApp());
 
