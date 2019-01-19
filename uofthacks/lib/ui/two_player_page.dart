@@ -15,7 +15,7 @@ class _TwoPlayerPage extends State<TwoPlayerPage>{
       _image = image;
     });
     model.card = FlashCard(image);
-    model.card.generateWords();
+    //model.card.generateWords();
   }
   Widget showImage(){
     if (_image == null){
@@ -27,7 +27,7 @@ class _TwoPlayerPage extends State<TwoPlayerPage>{
       child: Image.file(
         _image,
         scale: 0.9,
-        //width: 2,
+        width: 400,
       ),
     );
   }
