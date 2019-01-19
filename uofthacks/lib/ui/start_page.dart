@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
-import 'package:uofthacks/ui/two_player_page.dart';
-import 'package:uofthacks/domain/test_model.dart';
-import 'package:uofthacks/ui/test_page.dart';
+import 'package:uofthacks/ui/home_page.dart';
+//import 'package:uofthacks/ui/login_page.dart';
+//import 'package:uofthacks/domain/signup_page.dart';
 
-class HomePage extends StatefulWidget{
-  _HomePage createState() => _HomePage();
+class StartPage extends StatefulWidget{
+  _StartPage createState() => _StartPage();
 }
-class _HomePage extends State<HomePage>{
+
+class _StartPage extends State<StartPage>{
   Widget ButtonCreator(String title, Function press){
     return RaisedButton(
      color: Colors.cyan[600],
@@ -36,29 +37,15 @@ class _HomePage extends State<HomePage>{
       return ScopedModelDescendant<ViewModel>(
         rebuildOnChange: true,
         builder: (context, child, model) => Scaffold(
-          appBar: AppBar(
-            title: Text('Name of App'), 
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.settings),
-                tooltip: 'Settings',
-          //      onPressed: TwoPlayerPage(),
-              ),
-            ]
-          ),
-          backgroundColor: Colors.grey[800],
+          backgroundColor: Colors.white,
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                ButtonCreator('Solo Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                ButtonCreator('Login', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()))),
                 SizedBox(height: 20,),
-                ButtonCreator('Group Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
-                SizedBox(height: 20,),
-                ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
-                SizedBox(height: 20,),
-                ButtonCreator('Your Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                ButtonCreator('Signup', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()))),
               ],
             ),
           ),
