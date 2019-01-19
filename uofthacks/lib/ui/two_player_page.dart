@@ -23,6 +23,7 @@ class _TwoPlayerPage extends State<TwoPlayerPage> {
     context,
     MaterialPageRoute(builder: (context) => MakeCard()),
   );
+
   }
 
   Widget showImage() {
