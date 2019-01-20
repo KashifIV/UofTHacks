@@ -45,7 +45,7 @@ Map<String, dynamic> mapToFlash(FlashCard card){
   var dataMap = new Map<String, dynamic>();
     dataMap['image'] = card.image.uri.toString();
     dataMap['translations'] = card.translations.toString();
-    dataMap['native'] = card.bestWords.toString();
+    dataMap['native'] = card.bestWords; //.toString();
     return dataMap;
 }
 Future<void> DeleteFlashCard(String id, FlashCard card)async{
@@ -59,8 +59,24 @@ Future<List<FlashCard>> GetFlashCards(String id)async{
     List<FlashCard> t = []; 
     s.documents.forEach((task){
       if (task.exists){
-          t.add(new FlashCard(File(task['image']), bestWords: task['native'], conv: task['translations']));
+          
+          t.add(new FlashCard(File(task['image']), bestWords: task['native'], conv: parseLang(task['translations'])));
+                                                      ///////                     /////!!!!!//////
       }
     }); 
     return t;
 }
+
+List parseLang(String s) {
+  s = s.substring(1, s.length - 1);
+  List l = [];
+  int x = s.indexOf(',');
+  while (x != -1) {
+    l.add(s.substring(0, x));
+    s = s.substring(x+1);
+    x = s.indexOf(',');
+  }
+  print(l);
+  return l;
+  }
+  

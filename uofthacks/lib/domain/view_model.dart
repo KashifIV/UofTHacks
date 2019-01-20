@@ -54,7 +54,7 @@ class ViewModel extends Model{
       this.initState = PageState.valid;
       language = val[0];
       docId = val[1];
-      cards.addAll(await GetFlashCards(docId));
+      cards.addAll(await GetFlashCards(docId)); ///////////////////////
       print('-----------------');
       print(cards.length.toString());
       notifyListeners();
