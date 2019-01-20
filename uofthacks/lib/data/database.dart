@@ -27,6 +27,7 @@ Future<void> CreateFlashCard(String id, FlashCard card)async{
     DocumentReference ref = a.document();
     card.id = ref.documentID;
     await transaction.set(ref, mapToFlash(card));
+    print('Added a new Flash Card');
   });
 }
 Map<String, dynamic> mapToFlash(FlashCard card){
