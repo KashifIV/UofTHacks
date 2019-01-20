@@ -54,6 +54,7 @@ flutter:
   - assets/PICBEE(1).png
   - assets/PICBEE(2).png
   - assets/multi.jpg
+<<<<<<< HEAD
   - assets/default/2.jpg
   - assets/1.jpg
   - assets/2.jpg
@@ -70,6 +71,9 @@ flutter:
   - assets/13.jpg
   - assets/14.jpg
 
+=======
+  - assets/default
+>>>>>>> 95777d3b17fc824b2ad821f4b3d9c5403405d281
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
