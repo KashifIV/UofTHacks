@@ -5,13 +5,9 @@ import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
-<<<<<<< HEAD
-import 'package:uofthacks/ui/make_card.dart';
-=======
 import 'package:uofthacks/ui/login_page.dart';
 import 'package:uofthacks/ui/NavScreens/playwidget.dart';
 import 'package:uofthacks/ui/NavScreens/cardWidget.dart';
->>>>>>> nancy
 
 class HomePage extends StatefulWidget{
   final Auth auth;
