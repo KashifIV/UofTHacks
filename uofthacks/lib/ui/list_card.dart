@@ -14,29 +14,32 @@ class CardList extends StatefulWidget {
 class _CardList extends State<CardList> {
   @override
   Widget build(BuildContext context) {
-    final title = 'Grid List';
-    ViewModel model = new ViewModel();
+    final title = 'My Cards';
 
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this would produce 2 rows.
-          crossAxisCount: 2,
-          // Generate widgets that display their index in the List
-          children: List.generate(model.cards.length, (index) {
-            return Center(
-              child: Image.file(
-                model.cards[index].image
+    return ScopedModelDescendant<ViewModel>(
+        builder: (context, child, model) => Scaffold(
+              appBar: AppBar(
+                title: Text(title),
               ),
-            );
-          }),
-        ),
-      ),
-    );
+              body: GridView.count(
+                // Create a grid with 2 columns. If you change the scrollDirection to
+                // horizontal, this would produce 2 rows.
+                crossAxisCount: 2,
+                // Generate widgets that display their index in the List
+                children: List.generate(model.cards.length, (index) {
+                  return Center(
+                    child: Container(
+                      padding: EdgeInsets.all(12.0),
+                      decoration: new BoxDecoration(
+                        image: DecorationImage(
+                          image: new AssetImage(model.paths[index]),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ));
   }
 }
