@@ -9,39 +9,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uofthacks/data/card.dart';
 import 'package:uofthacks/ui/card_view.dart';
 
-class GenerateWords extends StatefulWidget {
-  File img;
-
-  GenerateWords({Key key, @required this.img}) : super(key: key);
-
-  _GenerateWords createState() => _GenerateWords();
-}
-
-class _GenerateWords extends State<GenerateWords> {
+class GenerateWords extends StatelessWidget {
   var _textController = new TextEditingController();
 
-  Widget showImage(ViewModel model) {
-    if (model.card == null) {
-      return Center(
-          child: FlutterLogo(
-        size: 100,
-      ));
-    } else
-      return Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.all(10.0),
-        child: Image.file(
-          model.card.image,
-          scale: 0.9,
-          //width: 2,
-        ),
-      );
-  }
   String hintText(ViewModel model) {
-    if (model.cardState == PageState.valid){
-      return model.card.bestWords[0];
-    }
-    else return 'Please enter the name of this photo';
+    return 'Please enter the name of this photo';
   }
   @override
   Widget build(BuildContext context) {
@@ -57,7 +29,7 @@ class _GenerateWords extends State<GenerateWords> {
             title: new TextField(
               controller: _textController,
               decoration: InputDecoration(
-                  hintText: hintText(model)),
+                  hintText: 'Please enter the name of this photo'),
             ),
           )),
           new Container(

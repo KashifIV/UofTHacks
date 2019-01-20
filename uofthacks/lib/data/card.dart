@@ -7,6 +7,7 @@ import 'dart:math';
 class FlashCard {
   String id;
   File image;
+  String path;
  // Image im;
   var name;
   var words = [];
@@ -15,9 +16,9 @@ class FlashCard {
   var conv;
   List<TranslationResult> translations = [];
 
-  FlashCard(File image,{this.name, this.bestWords, this.conv}) {
+  FlashCard(File image,{this.name, this.path,this.bestWords, this.conv}) {
     this.image = image;
-    this.generateWords();
+    //this.generateWords();
   }  
   Future<void> generateWords() async{
     List<ClassResult> value = await visualRecognitionFile(this.image);

@@ -11,7 +11,11 @@ class VerifyCard extends StatelessWidget{
           body: CardView(),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.check),
-            onPressed: () => model.AddCard(),
+            onPressed: (){ 
+              model.AddCard();
+              model.clear();
+              Navigator.pop(context);
+              },
           ),
         ),
       );

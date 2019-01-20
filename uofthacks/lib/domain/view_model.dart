@@ -14,18 +14,22 @@ class ViewModel extends Model{
   List<FlashCard> cards = [];
   PageState cardState = PageState.loading;
   PageState initState = PageState.loading;
-
   List<String> paths = [];
   
   void initializeCards(){
     for (int i = 1; i < 15; i++) {
       //default cards
-        cards.add(FlashCard(new File('assets/' + i.toString() + '.jpg')));
+        cards.add(FlashCard(new File('assets/' + i.toString() + '.jpg'),name: 'something',)..generateWords());
         paths.add('assets/' + i.toString() + '.jpg');
     }
+    notifyListeners();
   }
   void UpdateImage(File image){
     card = FlashCard(image);
+    notifyListeners();
+  }
+  void clear(){
+    cardState = PageState.loading;
     notifyListeners();
   }
   void UpdateCardName(String name) {
@@ -37,13 +41,21 @@ class ViewModel extends Model{
     else this.cardState = state;
     notifyListeners();
   }
+  void SetCard(FlashCard card){
+    this.card = card;
+    cardState = PageState.valid;
+    notifyListeners();
+  }
   Future<void> InitializeCard() async{
     await card.generateWords();
     cardState = PageState.valid;
     notifyListeners();
   }
   void AddCard(){
+    cards.add(card);
     CreateFlashCard(docId, card);
+    print(cards.toString());
+    notifyListeners();
   }
   Future<void> CheckAddUser(String id) async{
     this.uid = id;
@@ -53,15 +65,17 @@ class ViewModel extends Model{
       this.initState = PageState.valid;
       language = val[0];
       docId = val[1];
-      cards.addAll(await GetFlashCards(docId));
+      //cards.addAll(await GetFlashCards(docId));
       print('-----------------');
       print(cards.length.toString());
+      //initializeCards();
       notifyListeners();
       return;
     }
     //WRITE A PAGE TO ASK FOR LANGUAGE PREFERENCE
     docId = await CreateNewUser(id, 'French');
     this.initState = PageState.valid;
+    initializeCards();
     notifyListeners();    
 
   }

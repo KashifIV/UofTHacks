@@ -19,7 +19,7 @@ class cardWidget extends StatelessWidget {
         new Expanded(
         child: new GestureDetector(
           onTap: () {
-            ScopedModel.of<ViewModel>(context).initializeCards();
+            //ScopedModel.of<ViewModel>(context).initializeCards();
             Navigator.push(context, MaterialPageRoute(builder: (context)=> CardList()));
           },
           child: Container(

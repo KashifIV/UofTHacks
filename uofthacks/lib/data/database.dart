@@ -22,7 +22,7 @@ Future<List<String>> GetUser(String id)async{
   QuerySnapshot snapshot = await Firestore.instance.collection('users')
     .where('uid', isEqualTo: id)
     .getDocuments();
-    print('part 3');
+  print('part 3');
     print(snapshot.documents.toString());
     if (snapshot.documents.isEmpty){
       return ['None'];
@@ -43,7 +43,8 @@ Future<void> CreateFlashCard(String id, FlashCard card)async{
 }
 Map<String, dynamic> mapToFlash(FlashCard card){
   var dataMap = new Map<String, dynamic>();
-    dataMap['image'] = card.image.uri.toString();
+  card.image.path;
+    dataMap['image'] = card.image.path.toString();
     dataMap['translations'] = card.translations.toString();
     dataMap['native'] = card.bestWords.toString();
     return dataMap;

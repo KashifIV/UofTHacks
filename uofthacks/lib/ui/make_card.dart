@@ -21,16 +21,19 @@ class _MakeCard extends State<MakeCard> {
     model.UpdateImage(image);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => GenerateWords(img: model.card.image)),
+      MaterialPageRoute(builder: (context) => GenerateWords()),
     );
   }
 
   Future<void> getGalleryImage(ViewModel model) async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    print('After picture');
     model.UpdateImage(image);
+    model.UpdateState(PageState.loading, false);
+    print('After Update');
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => GenerateWords(img: model.card.image)),
+      MaterialPageRoute(builder: (context) => GenerateWords()),
     );
   }
 

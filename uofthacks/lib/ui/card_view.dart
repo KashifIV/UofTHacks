@@ -69,6 +69,7 @@ class CardView extends StatelessWidget{
             children: <Widget>[
               Container(
                 padding: EdgeInsets.all(20.0),
+                width: 200,
                 child: Text(model.card.bestWords[i],
                 style: TextStyle(
                   fontSize: 20,
@@ -76,6 +77,7 @@ class CardView extends StatelessWidget{
                 ),
               ),
               Container(
+                width: 200,
                 padding: EdgeInsets.all(20.0),
                 child: Text(model.card.translations[i].toString(),
                 style: TextStyle(
