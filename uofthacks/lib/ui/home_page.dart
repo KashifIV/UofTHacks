@@ -6,6 +6,7 @@ import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
 import 'package:uofthacks/ui/make_card.dart';
+import 'package:uofthacks/ui/list_card.dart';
 
 class HomePage extends StatefulWidget{
   final Auth auth;
@@ -49,9 +50,9 @@ class _HomePage extends State<HomePage>{
                 SizedBox(height: 20,),
                 ButtonCreator('Group Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
                 SizedBox(height: 20,),
-                ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> MakeCard()))),
                 SizedBox(height: 20,),
-                ButtonCreator('Developer Mode', () =>  Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                ButtonCreator('Developer Mode', () =>  Navigator.push(context, MaterialPageRoute(builder: (context)=> CardList()))),
               ],
             ),
           ),
