@@ -26,6 +26,7 @@ dependencies:
   firebase_database: ^0.4.1
   firebase_auth: 0.5.19
   firebase_core: any
+  path_provider: ^0.4.1
 
 dev_dependencies:
   flutter_test:

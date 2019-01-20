@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 import 'package:uofthacks/data/card.dart';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 Future<String> CreateNewUser(String id, String lang) async{
   DocumentReference ref;
@@ -43,7 +46,7 @@ Future<void> CreateFlashCard(String id, FlashCard card)async{
 }
 Map<String, dynamic> mapToFlash(FlashCard card){
   var dataMap = new Map<String, dynamic>();
-    dataMap['image'] = card.image.uri.toString();
+    dataMap['image'] = card.image.path.toString();
     dataMap['translations'] = card.translations.toString();
     dataMap['native'] = card.bestWords; //.toString();
     return dataMap;
@@ -59,8 +62,8 @@ Future<List<FlashCard>> GetFlashCards(String id)async{
     List<FlashCard> t = []; 
     s.documents.forEach((task){
       if (task.exists){
-          
-          t.add(new FlashCard(File(task['image']), bestWords: task['native'], conv: parseLang(task['translations'])));
+
+          t.add(new FlashCard(File(task['image'].substring(7)), bestWords: task['native'], conv: parseLang(task['translations'])));
                                                       ///////                     /////!!!!!//////
       }
     }); 
