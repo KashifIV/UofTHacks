@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/data/auth.dart';
+import 'package:uofthacks/ui/group_play.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
 import 'package:uofthacks/ui/make_card.dart';
@@ -27,6 +28,7 @@ class _HomePage extends State<HomePage>{
 
   @override
     Widget build(BuildContext context) {
+
       return Scaffold(
         appBar: AppBar(
         actions: <Widget> [

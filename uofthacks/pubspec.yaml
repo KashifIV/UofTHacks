@@ -54,6 +54,7 @@ flutter:
   - assets/PICBEE(1).png
   - assets/PICBEE(2).png
   - assets/multi.jpg
+  - assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 
