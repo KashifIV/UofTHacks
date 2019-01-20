@@ -16,6 +16,7 @@ class ViewModel extends Model{
   PageState initState = PageState.loading;
 
   List<String> paths = [];
+  
   void initializeCards(){
     for (int i = 1; i < 15; i++) {
       //default cards

@@ -4,6 +4,7 @@ import 'package:uofthacks/ui/make_card.dart';
 import 'package:uofthacks/ui/list_card.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
+import 'package:uofthacks/ui/make_card.dart';
 
 class cardWidget extends StatelessWidget {
 

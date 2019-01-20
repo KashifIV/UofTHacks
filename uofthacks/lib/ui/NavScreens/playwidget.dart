@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
+import 'package:uofthacks/ui/group_play.dart';
 
 class PlayWidget extends StatelessWidget {
 
@@ -30,7 +31,7 @@ class PlayWidget extends StatelessWidget {
         new Expanded(
         child: new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> GroupPlay()));
           },
           child: Container(
             padding: EdgeInsets.all(12.0),
