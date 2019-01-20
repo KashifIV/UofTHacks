@@ -6,7 +6,7 @@ class ViewModel extends Model{
   List<FlashCard> cards = [];
   void initializeCards(){
     for (int i = 1; i < 15; i++) {
-        cards.add(FlashCard(File('assets/' + i.toString() + '.png')));
+        cards.add(FlashCard(File('assets/default/' + i.toString() + '.jpg')));
     }
   }
   void UpdateImage(File image){
