@@ -7,6 +7,7 @@ import 'dart:math';
 class FlashCard {
   String id;
   File image;
+ // Image im;
   var name;
   var words = [];
   List<double> scores = [];

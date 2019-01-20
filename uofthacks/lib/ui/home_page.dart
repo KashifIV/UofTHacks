@@ -3,8 +3,11 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/data/auth.dart';
+import 'package:uofthacks/ui/group_play.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
+import 'package:uofthacks/ui/make_card.dart';
+import 'package:uofthacks/ui/list_card.dart';
 import 'package:uofthacks/ui/login_page.dart';
 import 'package:uofthacks/ui/NavScreens/playwidget.dart';
 import 'package:uofthacks/ui/NavScreens/cardWidget.dart';
@@ -44,8 +47,13 @@ class _HomePage extends State<HomePage>{
   }
   @override
     Widget build(BuildContext context) {
+<<<<<<< HEAD
       return ScopedModelDescendant<ViewModel>( 
         builder: (context, child, model) => Scaffold(
+=======
+
+      return Scaffold(
+>>>>>>> 6760eb90d4bf23da34af7f3c9c3a0f3ded599e5f
         appBar: AppBar(
         actions: <Widget> [
            IconButton(
