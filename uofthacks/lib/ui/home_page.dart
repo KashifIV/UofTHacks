@@ -5,6 +5,9 @@ import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
+import 'package:uofthacks/ui/login_page.dart';
+import 'package:uofthacks/ui/NavScreens/playwidget.dart';
+import 'package:uofthacks/ui/NavScreens/cardWidget.dart';
 
 class HomePage extends StatefulWidget{
   final Auth auth;
@@ -13,60 +16,53 @@ class HomePage extends StatefulWidget{
   _HomePage createState() => _HomePage();
 }
 class _HomePage extends State<HomePage>{
-  Widget ButtonCreator(String title, Function press){
-    return RaisedButton(
-     color: Colors.cyan[600],
-     elevation: 4.0, 
-     splashColor: Colors.blueGrey[300],
-     shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0)),
-     onPressed: press,
-     child: Container(
-       height: 40,
-       width: 230,
-       child: Text(
-         title,
-         textAlign: TextAlign.center,
-         style: TextStyle(
-           color: Colors.white,
-           fontSize: 30,
-         ),
-       ),
-     ),
-     padding: EdgeInsets.all(20.0),
-   );
-  }
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    PlayWidget(),
+    PlayWidget(),
+    cardWidget(),
+  ];
+
   @override
     Widget build(BuildContext context) {
-      return ScopedModelDescendant<ViewModel>(
-        rebuildOnChange: true,
-        builder: (context, child, model) => Scaffold(
-          appBar: AppBar(
-            title: Text('Name of App'), 
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.settings),
-                tooltip: 'Settings',
-          //      onPressed: TwoPlayerPage(),
-              ),
-            ]
-          ),
-          backgroundColor: Colors.grey[800],
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                ButtonCreator('Solo Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
-                SizedBox(height: 20,),
-                ButtonCreator('Group Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
-                SizedBox(height: 20,),
-                ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
-                SizedBox(height: 20,),
-                ButtonCreator('Developer Mode', () =>  Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
-              ],
+      return Scaffold(
+        appBar: AppBar(
+        actions: <Widget> [
+           IconButton(
+          icon: Icon(Icons.home),
+          onPressed:(){ 
+            widget.onSignedOut();
+            },
             ),
+        ],
+        title: Text('My App'),
+        
+      ),
+      body: _children[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTabTapped,
+        currentIndex: _currentIndex,
+        items: [
+           BottomNavigationBarItem(
+            icon: new Icon(Icons.settings), 
+            title: new Text('Settings'),
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.play_arrow), 
+            title: new Text('Play'),
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.card_giftcard),
+            title: new Text('Cards'),
+          )
+        ],
+      ),
       );
+    }
+    void onTabTapped(int index) {
+      setState(()
+      {
+        _currentIndex = index;
+      });
     }
 }
