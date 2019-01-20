@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
+import 'package:uofthacks/ui/make_card.dart';
 import 'package:uofthacks/ui/list_card.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';

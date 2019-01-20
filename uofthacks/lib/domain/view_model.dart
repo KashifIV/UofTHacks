@@ -3,15 +3,18 @@ import 'package:uofthacks/data/card.dart';
 import 'package:uofthacks/data/database.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-
+enum PageState{
+  valid, loading, failed
+}
 class ViewModel extends Model{
   String uid;
   String docId;
   FlashCard card;
   String language, difficulty;
-  PageState initState = PageState.loading;
-  PageState cardState = PageState.loading;
   List<FlashCard> cards = [];
+  PageState cardState = PageState.loading;
+  PageState initState = PageState.loading;
+
   List<String> paths = [];
   
   void initializeCards(){
@@ -51,6 +54,9 @@ class ViewModel extends Model{
       this.initState = PageState.valid;
       language = val[0];
       docId = val[1];
+      cards.addAll(await GetFlashCards(docId));
+      print('-----------------');
+      print(cards.toString());
       notifyListeners();
       return;
     }
@@ -60,7 +66,4 @@ class ViewModel extends Model{
     notifyListeners();    
 
   }
-}
-enum PageState{
-  valid, loading, failed
 }
