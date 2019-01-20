@@ -21,7 +21,7 @@ class _MakeCard extends State<MakeCard> {
     model.UpdateImage(image);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => GenerateWords()),
+      MaterialPageRoute(builder: (context) => GenerateWords(img: model.card.image)),
     );
   }
 
@@ -30,7 +30,7 @@ class _MakeCard extends State<MakeCard> {
     model.UpdateImage(image);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => GenerateWords()),
+      MaterialPageRoute(builder: (context) => GenerateWords(img: model.card.image)),
     );
   }
 
@@ -58,7 +58,7 @@ class _MakeCard extends State<MakeCard> {
       rebuildOnChange: true,
       builder: (context, child, model) => Scaffold(
           body: showImage(model),
-          floatingActionButton: Column(
+          floatingActionButton: Row(
             children: <Widget>[
               FloatingActionButton(
                 heroTag: 'camera',
@@ -68,7 +68,7 @@ class _MakeCard extends State<MakeCard> {
               FloatingActionButton(
                 heroTag: 'gallery',
                 onPressed: () => getGalleryImage(model),
-                child: Icon(Icons.add_a_photo),
+                child: Icon(Icons.add_photo_alternate),
               ),
             ],
           )),

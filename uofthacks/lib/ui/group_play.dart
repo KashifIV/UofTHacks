@@ -46,7 +46,7 @@ class _GroupPlay extends State<GroupPlay> {
     }
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<ViewModel>(
       builder: (context, child, model) => Scaffold(

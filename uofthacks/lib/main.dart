@@ -4,6 +4,7 @@ import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/ui/root_page.dart';
 import 'package:uofthacks/ui/home_page.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

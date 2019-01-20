@@ -52,11 +52,12 @@ class _LoginPage extends State<LoginPage>{
     }
   }
   Widget _logo(){
-    return Text('Speak Up!',
-      textAlign: TextAlign.start,
-      textScaleFactor: 2.0,
-      style: new TextStyle(color: Colors.grey),
-    );
+    return Container(
+      height: 200,
+      padding: EdgeInsets.all(10.0),
+      child: Image(
+        image: new AssetImage('assets/PICBEE.png'),        
+        ));
   }
   Widget _emailInput() {
     return new TextFormField(
@@ -114,12 +115,12 @@ class _LoginPage extends State<LoginPage>{
             padding: EdgeInsets.symmetric(vertical: 16.0),
             child: new Material(
                 borderRadius: BorderRadius.circular(30.0),
-                shadowColor: Colors.blueAccent.shade100,
+                shadowColor: Colors.yellowAccent.shade100,
                 elevation: 5.0,
                 child: new MaterialButton(
                   minWidth: 200.0,
                   height: 42.0,
-                  color: Colors.blue,
+                  color: Colors.yellow,
                   child: new Text('Login',
                       style:
                       new TextStyle(fontSize: 20.0, color: Colors.white)),
@@ -131,12 +132,12 @@ class _LoginPage extends State<LoginPage>{
             padding: EdgeInsets.symmetric(vertical: 16.0),
             child: new Material(
                 borderRadius: BorderRadius.circular(30.0),
-                shadowColor: Colors.lightBlueAccent.shade100,
+                shadowColor: Colors.yellowAccent.shade100,
                 elevation: 5.0,
                 child: new MaterialButton(
                   minWidth: 200.0,
                   height: 42.0,
-                  color: Colors.blue,
+                  color: Colors.yellow,
                   child: new Text('Create account',
                       style:
                       new TextStyle(fontSize: 20.0, color: Colors.white)),
@@ -147,6 +148,7 @@ class _LoginPage extends State<LoginPage>{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.white,
       body: new Form(
         key: formKey,
         child: new Column(
