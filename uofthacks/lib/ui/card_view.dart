@@ -68,7 +68,7 @@ class CardView extends StatelessWidget{
                   fontSize: 20,
                 ),);
     }
-    return Text(model.card.bestWords[i],
+    return Text(model.card.translations[i].toString(),
             style: TextStyle(
                   fontSize: 20,
                 ),);
@@ -84,8 +84,10 @@ class CardView extends StatelessWidget{
               Container(
                 padding: EdgeInsets.all(20.0),
                 width: 200,
-                child: DetermineType(model, i),
-                
+                child: Text(model.card.bestWords[i],
+                style: TextStyle(
+                  fontSize: 20,
+                ),),
                 
               ),
               Container(

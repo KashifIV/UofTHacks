@@ -12,7 +12,7 @@ class VerifyCard extends StatelessWidget{
     Widget build(BuildContext context) {
       return ScopedModelDescendant<ViewModel>(
         builder: (context, child, model) => Scaffold(
-          body: CardView(),
+          body: Filter(model),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.check),
             onPressed: (){ 

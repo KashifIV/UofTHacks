@@ -45,6 +45,9 @@ Future<void> CreateFlashCard(String id, FlashCard card)async{
   
 }
 Map<String, dynamic> mapToFlash(FlashCard card){
+  print(card.image.path.toString());
+  print(card.translations.toString());
+  print(card.bestWords);
   var dataMap = new Map<String, dynamic>();
     dataMap['image'] = card.image.path.toString();
     dataMap['translations'] = card.translations.toString();

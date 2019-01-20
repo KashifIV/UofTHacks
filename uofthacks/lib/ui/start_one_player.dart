@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/domain/view_model.dart';
-
+import 'package:uofthacks/ui/solo_play.dart';
 class startOne extends StatelessWidget {
   
   startOne();
@@ -28,7 +28,7 @@ class startOne extends StatelessWidget {
               color: Colors.yellow,
               height: 80,
               minWidth: 200,
-              onPressed:(){  Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()));
+              onPressed:(){  Navigator.push(context, MaterialPageRoute(builder: (context)=> SoloPlay()));
           }
           
         ),

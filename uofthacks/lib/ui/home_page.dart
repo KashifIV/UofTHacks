@@ -58,7 +58,7 @@ class _HomePage extends State<HomePage>{
             },
             ),
         ],
-        title: Text('My App'),
+        title: Text('PicBee'),
         
       ),
       body: PageLoader(model),
