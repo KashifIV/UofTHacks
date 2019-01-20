@@ -20,6 +20,7 @@ class ViewModel extends Model{
         cards.add(FlashCard(new File('assets/' + i.toString() + '.jpg')));
         paths.add('assets/' + i.toString() + '.jpg');
     }
+    
   }
   void UpdateImage(File image){
     card = FlashCard(image);
