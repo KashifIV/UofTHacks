@@ -3,6 +3,9 @@ import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/ui/group_play.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
+import 'package:uofthacks/ui/start_one_player.dart';
+import 'package:uofthacks/ui/start_two_player.dart';
+
 class PlayWidget extends StatelessWidget {
 
  PlayWidget();
@@ -16,7 +19,7 @@ class PlayWidget extends StatelessWidget {
         new Expanded(
         child: new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> startOne()));
           },
           child: Container(
             padding: EdgeInsets.all(12.0),
@@ -32,10 +35,7 @@ class PlayWidget extends StatelessWidget {
         new Expanded(
         child: new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context){
-              print(ScopedModel.of<ViewModel>(context).cards[0].name);
-              ScopedModel.of<ViewModel>(context).SetCard(ScopedModel.of<ViewModel>(context).cards[0]);
-              return GroupPlay();}));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> startTwo()));
           },
           child: Container(
             padding: EdgeInsets.all(12.0),

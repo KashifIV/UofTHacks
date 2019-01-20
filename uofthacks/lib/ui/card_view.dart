@@ -30,8 +30,9 @@ class CardView extends StatelessWidget{
                 flexibleSpace: FlexibleSpaceBar(
                   background: Image.file(model.card.image),
                   centerTitle: true,
+                  
                   title: Text(                  
-                    model.card.name,
+                    model.card.bestWords[0],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 40.0,
@@ -49,6 +50,7 @@ class CardView extends StatelessWidget{
                     ]
                     ),
                   ),
+                  
                 ),
               ),
               SliverList(
@@ -58,6 +60,18 @@ class CardView extends StatelessWidget{
               ),
             ],
           );
+  }
+  Widget DetermineType(ViewModel model, int i){
+    if (model.card.conv != null) {
+      return Text(model.card.conv[i],
+      style: TextStyle(
+                  fontSize: 20,
+                ),);
+    }
+    return Text(model.card.bestWords[i],
+            style: TextStyle(
+                  fontSize: 20,
+                ),);
   }
   List<Widget> ListOptions(ViewModel model) {
     List<Widget> a = [];
@@ -70,20 +84,14 @@ class CardView extends StatelessWidget{
               Container(
                 padding: EdgeInsets.all(20.0),
                 width: 200,
-                child: Text(model.card.bestWords[i],
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-                ),
+                child: DetermineType(model, i),
+                
+                
               ),
               Container(
                 width: 200,
                 padding: EdgeInsets.all(20.0),
-                child: Text(model.card.translations[i].toString(),
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-                ),
+                child: DetermineType(model, i),
               )
             ],
           ),

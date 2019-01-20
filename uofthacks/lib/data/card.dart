@@ -12,12 +12,14 @@ class FlashCard {
   var name;
   var words = [];
   List<double> scores = [];
-  var bestWords;
-  var conv;
+  var bestWords; //4 eng
+  var conv; //4 trans
   List<TranslationResult> translations = [];
 
   FlashCard(File image,{this.name, this.path,this.bestWords, this.conv}) {
     this.image = image;
+    this.bestWords = bestWords;
+    this.conv = conv;
     //this.generateWords();
   }  
   Future<void> generateWords() async{

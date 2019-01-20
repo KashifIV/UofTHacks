@@ -29,9 +29,21 @@ class ViewModel extends Model{
     notifyListeners();
   }
   void clear(){
+    //card = null;
     cardState = PageState.loading;
     notifyListeners();
   }
+
+  void updateDifficulty(String dif){
+    difficulty = dif;
+    notifyListeners();
+  }
+
+  void updateLanguage(String lang){
+    language = lang;
+    notifyListeners();
+  }
+
   void UpdateCardName(String name) {
     this.card.name = name;
     notifyListeners();
@@ -47,6 +59,7 @@ class ViewModel extends Model{
     notifyListeners();
   }
   Future<void> InitializeCard() async{
+    if (card.conv != null) return;
     await card.generateWords();
     cardState = PageState.valid;
     notifyListeners();
@@ -65,7 +78,7 @@ class ViewModel extends Model{
       this.initState = PageState.valid;
       language = val[0];
       docId = val[1];
-      //cards.addAll(await GetFlashCards(docId));
+      cards.addAll(await GetFlashCards(docId));
       print('-----------------');
       print(cards.length.toString());
       //initializeCards();
@@ -79,4 +92,5 @@ class ViewModel extends Model{
     notifyListeners();    
 
   }
+
 }

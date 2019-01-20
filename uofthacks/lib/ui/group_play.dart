@@ -18,15 +18,25 @@ class GroupPlay extends StatelessWidget {
     return ScopedModelDescendant<ViewModel>(
       builder: (context, child, model) => Scaffold(
         body: CardView(),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.check),
-          onPressed: (){
-            print(model.cards[_currentIndex]);
-            counter++;
-            _currentIndex++;
-            model.SetCard(model.cards[_currentIndex]);
-          },
-        ),
+        
+        bottomNavigationBar: new BottomAppBar(
+        notchMargin: 4.0,
+        child: new Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+                IconButton(icon: Icon(Icons.check), onPressed: (){
+                   counter++;
+                   _currentIndex++;
+                    model.SetCard(model.cards[_currentIndex]);
+                }),
+                IconButton(icon: Icon(Icons.error), onPressed: () {
+                  _currentIndex++;
+                    model.SetCard(model.cards[_currentIndex]);
+                },),
+              ],
+            ),
+          ),
       ),
     );
   }

@@ -5,6 +5,10 @@ import 'package:uofthacks/ui/card_view.dart';
 
 class VerifyCard extends StatelessWidget{
   @override
+  Widget Filter(ViewModel model){
+    model.UpdateState(PageState.loading, false);
+    return CardView();
+  }
     Widget build(BuildContext context) {
       return ScopedModelDescendant<ViewModel>(
         builder: (context, child, model) => Scaffold(
