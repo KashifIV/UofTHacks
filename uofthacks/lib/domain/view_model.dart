@@ -56,7 +56,7 @@ class ViewModel extends Model{
       docId = val[1];
       cards.addAll(await GetFlashCards(docId));
       print('-----------------');
-      print(cards.toString());
+      print(cards.length.toString());
       notifyListeners();
       return;
     }
