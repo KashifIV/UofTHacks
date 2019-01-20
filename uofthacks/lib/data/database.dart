@@ -49,16 +49,17 @@ Map<String, dynamic> mapToFlash(FlashCard card){
     return dataMap;
 }
 Future<void> DeleteFlashCard(String id, FlashCard card)async{
-  CollectionReference a = Firestore.instance.collection('users/' + id + '/flashcards');
+  CollectionReference a = Firestore.instance.collection('users/' + id + '/flashcard');
   await a.document(card.id).delete();
 }
 Future<List<FlashCard>> GetFlashCards(String id)async{
-  CollectionReference ref = Firestore.instance.collection('Projects/' + id +'/flashcards');
-    QuerySnapshot s = await ref.getDocuments(); 
+  CollectionReference a = Firestore.instance.collection('users/' + id + '/flashcard');
+    QuerySnapshot s = await a.getDocuments(); 
+    print(s.documents.length);
     List<FlashCard> t = []; 
     s.documents.forEach((task){
-      if (task['name'] != null){
-          t.add(new FlashCard(File(task['image']), bestWords: task['native'], translations: task['translations']));
+      if (task.exists){
+          t.add(new FlashCard(File(task['image']), bestWords: task['native'], conv: task['translations']));
       }
     }); 
     return t;

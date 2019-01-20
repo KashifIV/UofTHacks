@@ -12,9 +12,10 @@ class FlashCard {
   var words = [];
   List<double> scores = [];
   var bestWords;
+  var conv;
   List<TranslationResult> translations = [];
 
-  FlashCard(File image,{this.name, this.bestWords, this.translations}) {
+  FlashCard(File image,{this.name, this.bestWords, this.conv}) {
     this.image = image;
     this.generateWords();
   }  
