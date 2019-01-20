@@ -6,6 +6,8 @@ import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/ui/group_play.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
+import 'package:uofthacks/ui/make_card.dart';
+import 'package:uofthacks/ui/list_card.dart';
 import 'package:uofthacks/ui/login_page.dart';
 import 'package:uofthacks/ui/NavScreens/playwidget.dart';
 import 'package:uofthacks/ui/NavScreens/cardWidget.dart';
