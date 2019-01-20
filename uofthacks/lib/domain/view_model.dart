@@ -29,20 +29,17 @@ class ViewModel extends Model{
     card = FlashCard(image);
     notifyListeners();
   }
-<<<<<<< HEAD
 
-  String difficulty;
   void updateDifficulty(String dif){
     difficulty = dif;
     notifyListeners();
   }
 
-  String language;
   void updateLanguage(String lang){
     language = lang;
     notifyListeners();
   }
-=======
+
   void UpdateCardName(String name) {
     this.card.name = name;
     notifyListeners();
@@ -80,5 +77,5 @@ class ViewModel extends Model{
     notifyListeners();    
 
   }
->>>>>>> 761d6c4216b4ac4694a739d17efb4ef1208ecaf6
+
 }
