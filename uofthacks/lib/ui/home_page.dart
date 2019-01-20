@@ -3,6 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/data/auth.dart';
+import 'package:uofthacks/ui/group_play.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
 import 'package:uofthacks/ui/make_card.dart';
@@ -47,7 +48,7 @@ class _HomePage extends State<HomePage>{
               children: <Widget>[
                 ButtonCreator('Solo Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
                 SizedBox(height: 20,),
-                ButtonCreator('Group Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
+                ButtonCreator('Group Play', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> GroupPlay()))),
                 SizedBox(height: 20,),
                 ButtonCreator('Make Cards', () => Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()))),
                 SizedBox(height: 20,),
