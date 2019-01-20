@@ -14,7 +14,7 @@ class FlashCard {
   var bestWords;
   List<TranslationResult> translations = [];
 
-  FlashCard(File image,{this.name}) {
+  FlashCard(File image,{this.name, this.bestWords, this.translations}) {
     this.image = image;
     this.generateWords();
   }  

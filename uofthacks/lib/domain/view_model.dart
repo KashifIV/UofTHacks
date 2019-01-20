@@ -1,35 +1,27 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/data/card.dart';
-<<<<<<< HEAD
 import 'package:uofthacks/data/database.dart';
-=======
 import 'package:flutter/material.dart';
->>>>>>> 6760eb90d4bf23da34af7f3c9c3a0f3ded599e5f
 import 'dart:io';
+enum PageState{
+  valid, loading, failed
+}
 class ViewModel extends Model{
   String uid;
   String docId;
   FlashCard card;
   String language, difficulty;
   List<FlashCard> cards = [];
-<<<<<<< HEAD
   PageState cardState = PageState.loading;
   PageState initState = PageState.loading;
-  void initializeCards(){
-    
-=======
+
   List<String> paths = [];
   void initializeCards(){
     for (int i = 1; i < 15; i++) {
-<<<<<<< HEAD
       //default cards
         cards.add(FlashCard(new File('assets/' + i.toString() + '.jpg')));
         paths.add('assets/' + i.toString() + '.jpg');
-=======
-        cards.add(FlashCard(File('assets/default/' + i.toString() + '.jpg')));
->>>>>>> 95777d3b17fc824b2ad821f4b3d9c5403405d281
     }
->>>>>>> 6760eb90d4bf23da34af7f3c9c3a0f3ded599e5f
   }
   void UpdateImage(File image){
     card = FlashCard(image);
@@ -60,6 +52,9 @@ class ViewModel extends Model{
       this.initState = PageState.valid;
       language = val[0];
       docId = val[1];
+      cards.addAll(await GetFlashCards(docId));
+      print('-----------------');
+      print(cards.toString());
       notifyListeners();
       return;
     }
@@ -69,7 +64,4 @@ class ViewModel extends Model{
     notifyListeners();    
 
   }
-}
-enum PageState{
-  valid, loading, failed
 }

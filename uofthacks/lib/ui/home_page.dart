@@ -47,13 +47,8 @@ class _HomePage extends State<HomePage>{
   }
   @override
     Widget build(BuildContext context) {
-<<<<<<< HEAD
       return ScopedModelDescendant<ViewModel>( 
         builder: (context, child, model) => Scaffold(
-=======
-
-      return Scaffold(
->>>>>>> 6760eb90d4bf23da34af7f3c9c3a0f3ded599e5f
         appBar: AppBar(
         actions: <Widget> [
            IconButton(

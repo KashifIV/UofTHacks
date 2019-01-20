@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 import 'package:uofthacks/data/card.dart';
+import 'dart:io';
 
 Future<String> CreateNewUser(String id, String lang) async{
   DocumentReference ref;
@@ -42,9 +43,6 @@ Future<void> CreateFlashCard(String id, FlashCard card)async{
 }
 Map<String, dynamic> mapToFlash(FlashCard card){
   var dataMap = new Map<String, dynamic>();
-    print(card.image.uri.toString());
-    print(card.translations.toString());
-    print(card.bestWords.toString());
     dataMap['image'] = card.image.uri.toString();
     dataMap['translations'] = card.translations.toString();
     dataMap['native'] = card.bestWords.toString();
@@ -53,4 +51,15 @@ Map<String, dynamic> mapToFlash(FlashCard card){
 Future<void> DeleteFlashCard(String id, FlashCard card)async{
   CollectionReference a = Firestore.instance.collection('users/' + id + '/flashcards');
   await a.document(card.id).delete();
+}
+Future<List<FlashCard>> GetFlashCards(String id)async{
+  CollectionReference ref = Firestore.instance.collection('Projects/' + id +'/flashcards');
+    QuerySnapshot s = await ref.getDocuments(); 
+    List<FlashCard> t = []; 
+    s.documents.forEach((task){
+      if (task['name'] != null){
+          t.add(new FlashCard(File(task['image']), bestWords: task['native'], translations: task['translations']));
+      }
+    }); 
+    return t;
 }
