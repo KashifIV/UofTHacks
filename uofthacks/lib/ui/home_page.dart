@@ -3,8 +3,14 @@ import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
 import 'package:uofthacks/data/auth.dart';
+import 'package:uofthacks/ui/group_play.dart';
 import 'package:uofthacks/domain/test_model.dart';
 import 'package:uofthacks/ui/test_page.dart';
+<<<<<<< HEAD
+=======
+import 'package:uofthacks/ui/make_card.dart';
+import 'package:uofthacks/ui/list_card.dart';
+>>>>>>> 761d6c4216b4ac4694a739d17efb4ef1208ecaf6
 import 'package:uofthacks/ui/login_page.dart';
 import 'package:uofthacks/ui/NavScreens/playwidget.dart';
 import 'package:uofthacks/ui/NavScreens/cardWidget.dart';
@@ -15,6 +21,7 @@ class HomePage extends StatefulWidget{
   HomePage({this.auth, this.onSignedOut});
   _HomePage createState() => _HomePage();
 }
+
 class _HomePage extends State<HomePage>{
   int _currentIndex = 0;
   final List<Widget> _children = [
@@ -22,10 +29,29 @@ class _HomePage extends State<HomePage>{
     PlayWidget(),
     cardWidget(),
   ];
-
+  Widget PageLoader(ViewModel model){
+    switch(model.initState){
+      case PageState.loading:
+        return LoadPage(model);
+      case PageState.valid:
+        return ValidPage(model);
+      case PageState.failed:
+        return Center(child: Text('Sorry the process failed to complete.' ,),);
+    }  
+  }
+  Widget LoadPage(ViewModel model){
+    widget.auth.getCurrentUser().then((test){
+      model.CheckAddUser(test);
+    });
+    return Center(child: CircularProgressIndicator(),);
+  }
+  Widget ValidPage(ViewModel model){
+    return _children[_currentIndex];
+  }
   @override
     Widget build(BuildContext context) {
-      return Scaffold(
+      return ScopedModelDescendant<ViewModel>( 
+        builder: (context, child, model) => Scaffold(
         appBar: AppBar(
         actions: <Widget> [
            IconButton(
@@ -38,7 +64,7 @@ class _HomePage extends State<HomePage>{
         title: Text('My App'),
         
       ),
-      body: _children[_currentIndex],
+      body: PageLoader(model),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
@@ -57,7 +83,7 @@ class _HomePage extends State<HomePage>{
           )
         ],
       ),
-      );
+      ));
     }
     void onTabTapped(int index) {
       setState(()

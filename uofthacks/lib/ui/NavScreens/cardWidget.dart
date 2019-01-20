@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:uofthacks/ui/two_player_page.dart';
+import 'package:uofthacks/ui/make_card.dart';
+import 'package:uofthacks/ui/list_card.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:uofthacks/domain/view_model.dart';
+import 'package:uofthacks/ui/make_card.dart';
 
 class cardWidget extends StatelessWidget {
 
@@ -14,7 +19,8 @@ class cardWidget extends StatelessWidget {
         new Expanded(
         child: new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()));
+            ScopedModel.of<ViewModel>(context).initializeCards();
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> CardList()));
           },
           child: Container(
             padding: EdgeInsets.all(12.0),
@@ -30,7 +36,7 @@ class cardWidget extends StatelessWidget {
         new Expanded(
         child: new GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> TwoPlayerPage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> MakeCard()));
           },
           child: Container(
             padding: EdgeInsets.all(12.0),
