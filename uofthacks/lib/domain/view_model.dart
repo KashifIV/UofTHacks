@@ -13,4 +13,16 @@ class ViewModel extends Model{
     card = FlashCard(image);
     notifyListeners();
   }
+
+  String difficulty;
+  void updateDifficulty(String dif){
+    difficulty = dif;
+    notifyListeners();
+  }
+
+  String language;
+  void updateLanguage(String lang){
+    language = lang;
+    notifyListeners();
+  }
 }
