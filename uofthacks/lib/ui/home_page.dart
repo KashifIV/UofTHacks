@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget{
   HomePage({this.auth, this.onSignedOut});
   _HomePage createState() => _HomePage();
 }
+
 class _HomePage extends State<HomePage>{
   int _currentIndex = 0;
   final List<Widget> _children = [
@@ -22,10 +23,29 @@ class _HomePage extends State<HomePage>{
     PlayWidget(),
     cardWidget(),
   ];
-
+  Widget PageLoader(ViewModel model){
+    switch(model.initState){
+      case PageState.loading:
+        return LoadPage(model);
+      case PageState.valid:
+        return ValidPage(model);
+      case PageState.failed:
+        return Center(child: Text('Sorry the process failed to complete.' ,),);
+    }  
+  }
+  Widget LoadPage(ViewModel model){
+    widget.auth.getCurrentUser().then((test){
+      model.CheckAddUser(test);
+    });
+    return Center(child: CircularProgressIndicator(),);
+  }
+  Widget ValidPage(ViewModel model){
+    return _children[_currentIndex];
+  }
   @override
     Widget build(BuildContext context) {
-      return Scaffold(
+      return ScopedModelDescendant<ViewModel>( 
+        builder: (context, child, model) => Scaffold(
         appBar: AppBar(
         actions: <Widget> [
            IconButton(
@@ -38,7 +58,7 @@ class _HomePage extends State<HomePage>{
         title: Text('My App'),
         
       ),
-      body: _children[_currentIndex],
+      body: PageLoader(model),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
@@ -57,7 +77,7 @@ class _HomePage extends State<HomePage>{
           )
         ],
       ),
-      );
+      ));
     }
     void onTabTapped(int index) {
       setState(()

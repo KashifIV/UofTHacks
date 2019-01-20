@@ -57,21 +57,24 @@ class _MakeCard extends State<MakeCard> {
     return ScopedModelDescendant<ViewModel>(
       rebuildOnChange: true,
       builder: (context, child, model) => Scaffold(
-          body: showImage(model),
-          floatingActionButton: Row(
+          body: Center(child:
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               FloatingActionButton(
                 heroTag: 'camera',
                 onPressed: () => getCameraImage(model),
                 child: Icon(Icons.add_a_photo),
               ),
+              SizedBox(width: 40,),
               FloatingActionButton(
                 heroTag: 'gallery',
                 onPressed: () => getGalleryImage(model),
                 child: Icon(Icons.add_photo_alternate),
               ),
             ],
-          )),
+          ))),
     );
   }
 }

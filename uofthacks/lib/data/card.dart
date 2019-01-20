@@ -5,6 +5,7 @@ import 'package:quiver/iterables.dart';
 import 'dart:math';
 
 class FlashCard {
+  String id;
   File image;
   var name;
   var words = [];
@@ -12,27 +13,25 @@ class FlashCard {
   var bestWords;
   List<TranslationResult> translations = [];
 
-  FlashCard(File image) {
+  FlashCard(File image,{this.name}) {
     this.image = image;
     this.generateWords();
   }  
-
-  void generateWords() {
-    visualRecognitionFile(this.image).then((value) { 
-      print(value.runtimeType);
+  Future<void> generateWords() async{
+    List<ClassResult> value = await visualRecognitionFile(this.image);
+    print(value.runtimeType);
 
       value.forEach((item) {
         this.words.add(item.className);
         this.scores.add(item.score);
       });
 
-      print(this.words.toString());
-      print(this.scores.toString());
+    print(this.words.toString());
+    print(this.scores.toString());
 
-      this.maxScores(this.scores);
-      this.translateWords();
-
-    });
+    this.maxScores(this.scores);
+    await this.translateWords();
+    
 
   }
 
