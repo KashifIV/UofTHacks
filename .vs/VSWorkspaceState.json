@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\uofthacks",
+    "\\uofthacks\\android",
+    "\\uofthacks\\android\\app",
+    "\\uofthacks\\lib",
+    "\\uofthacks\\lib\\data",
+    "\\uofthacks\\lib\\domain",
+    "\\uofthacks\\lib\\ui"
+  ],
+  "SelectedNode": "\\uofthacks\\lib\\ui\\home_page.dart",
+  "PreviewInSolutionExplorer": false
+}
