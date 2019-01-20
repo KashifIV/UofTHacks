@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:uofthacks/domain/view_model.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:uofthacks/ui/verify_card.dart';
+import 'package:uofthacks/domain/view_model.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:uofthacks/data/card.dart';
@@ -34,45 +37,49 @@ class _GenerateWords extends State<GenerateWords> {
         ),
       );
   }
-
+  String hintText(ViewModel model) {
+    if (model.cardState == PageState.valid){
+      return model.card.bestWords[0];
+    }
+    else return 'Please enter the name of this photo';
+  }
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Home Page"),
-      ),
-      body: new ListView(
+    return new ScopedModelDescendant<ViewModel>( 
+      builder: (context, child, model) => Scaffold(
+      body: new Column(
+        crossAxisAlignment: CrossAxisAlignment.center,  
+        mainAxisAlignment: MainAxisAlignment.center,     
         children: <Widget>[
-          new ListTile(
+          new Container(
+            padding: EdgeInsets.fromLTRB(30.0,0,30.0,0),
+            child:ListTile(
             title: new TextField(
               controller: _textController,
               decoration: InputDecoration(
-                  hintText: 'Please enter the name of this photo'),
+                  hintText: hintText(model)),
             ),
-          ),
-          new ListTile(
+          )),
+          new Container(
+            padding: EdgeInsets.all(30.0),
+            child:ListTile(
             title: new RaisedButton(
               child: new Text("Next"),
-              onPressed: () {
+              color: Colors.yellow,
+              onPressed: () {    
+                model.UpdateCardName(_textController.text);       
                 var route = new MaterialPageRoute(
                   builder: (BuildContext context) =>
-                      new CardView(name: _textController.text),
+                      new VerifyCard(),
                 );
                 Navigator.of(context).push(route);
               },
             ),
           ),
-          new Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(10.0),
-            child: Image.file(
-              widget.img,
-              scale: 0.6,
-              //width: 2,
-            ),
+         
           )
         ],
       ),
-    );
+    ));
   }
 }

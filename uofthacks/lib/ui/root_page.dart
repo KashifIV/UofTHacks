@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:uofthacks/data/auth.dart';
 import 'package:uofthacks/ui/home_page.dart';
 import 'package:uofthacks/ui/login_page.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:uofthacks/domain/view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class RootPage extends StatefulWidget {

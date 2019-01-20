@@ -43,7 +43,7 @@ class _TestPage extends State<TestPage>{
 
       children: <Widget>[
         // Add as many texts as you want
-        Text(model.counter.toString()),
+        //Text(model.counter.toString()),
         Text('Testing')
       ],
     ));
